@@ -1,5 +1,5 @@
 //Jesus
-import { StyleSheet, Text, View } from "react-native";
+import { KeyboardAvoidingView, Platform, StyleSheet, Text, View } from "react-native";
 import { Provider } from "react-redux";
 import { store } from "./store";
 import { TailwindProvider } from "tailwindcss-react-native";
@@ -19,19 +19,24 @@ export default function App() {
       <NavigationContainer>
         <SafeAreaProvider>
           <TailwindProvider>
-            <Stack.Navigator>
-              <Stack.Screen
-                name="HomeScreen"
-                component={HomeScreen}
-                options={{ headerShown: false }}
-              />
-              <Stack.Screen
-                name="MapScreen"
-                component={MapScreen}
-                options={{ headerShown: false }}
-              />
-            </Stack.Navigator>
-            <StatusBar style="dark" />
+            <KeyboardAvoidingView
+              behavior={Platform.OS === "ios" ? "padding" : "height"}
+              style={{ flex: 1 }}
+            >
+              <Stack.Navigator>
+                <Stack.Screen
+                  name="HomeScreen"
+                  component={HomeScreen}
+                  options={{ headerShown: false }}
+                />
+                <Stack.Screen
+                  name="MapScreen"
+                  component={MapScreen}
+                  options={{ headerShown: false }}
+                />
+              </Stack.Navigator>
+              <StatusBar style="dark" />
+            </KeyboardAvoidingView>
           </TailwindProvider>
         </SafeAreaProvider>
       </NavigationContainer>

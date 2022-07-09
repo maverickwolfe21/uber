@@ -4,10 +4,9 @@ import React from "react";
 import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplete";
 
 import NavOptions from "../components/NavOptions";
+import NavFavorites from "../components/NavFavorites";
 import { useDispatch } from "react-redux";
 import { setDestination, setOrigin } from "../slices/navSlice";
-
-require("dotenv");
 
 const key = process.env.GOOGLE_MAPS_APIKEY;
 
@@ -51,6 +50,7 @@ const HomeScreen = () => {
           placeholder="Where from?"
         />
         <NavOptions />
+        <NavFavorites />
       </View>
     </View>
   );
